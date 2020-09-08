@@ -1,8 +1,8 @@
-
+package LeetCode;
 public class SudoKuSolverLC37 {
     public static final int EMPTY = 0; // EMPTY CELL
     public static final int SIZE = 9; // SIZE OF SUDOKU GRID
-    private int[][] board= new int[SIZE][SIZE];;
+    private int[][] board= new int[SIZE][SIZE];
     public SudoKuSolverLC37(int[][] board) {
         for(int i=0;i<SIZE;i++){
             for(int j=0;j<SIZE;j++){
