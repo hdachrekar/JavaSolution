@@ -14,10 +14,13 @@ public class WordCountEngine {
 
         for (String str : wordString) {
             String strsanitize = sanitize(str);
-            int freq = hmap.getOrDefault(strsanitize, 0) + 1;
-            String strword = strsanitize;
-            hmap.put(strword, freq);
-            maxcount = Math.max(freq, maxcount);
+            if(strsanitize.length()>0){
+                int freq = hmap.getOrDefault(strsanitize, 0) + 1;
+                String strword = strsanitize;
+                hmap.put(strword, freq);
+                maxcount = Math.max(freq, maxcount);
+            }
+
         }
 
         for (Map.Entry<String, Integer> entry : hmap.entrySet()) {
@@ -57,7 +60,8 @@ public class WordCountEngine {
 
 
     public static void main(String[] args) {
-        String document="Practice makes perfect. you'll only get Perfect by practice. just practice!";
+        //String document="Practice makes perfect. you'll only get Perfect by practice. just practice!";
+        String document="Every book is a quotation; and every house is a quotation out of all forests, and mines, and stone quarries; and every man is a quotation from all his ancestors.";
         String[][] output =wordCountEngine(document);
         for (int j = 0; j < output.length; j++){
             String[] strarr= new String[]{output[j][0],output[j][1]};
