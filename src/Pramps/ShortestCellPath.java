@@ -26,51 +26,57 @@ output: 8
 1111
 *
 * */
-class Node{
-    int x , y , dist;
-    Node(int x,int y,int dist){
-        this.x=x;
-        this.y=y;
-        this.dist=dist;
+class Node {
+    int x, y, dist;
+
+    Node(int x, int y, int dist) {
+        this.x = x;
+        this.y = y;
+        this.dist = dist;
     }
 }
+
 public class ShortestCellPath {
     private static final int[] row = {-1, 0, 0, 1};
     private static final int[] col = {0, -1, 1, 0};
+
     static int shortestCellPathBFS(int[][] grid, int sr, int sc, int tr, int tc) {
-        boolean[][]visited = new boolean[grid.length][grid[0].length];
+        boolean[][] visited = new boolean[grid.length][grid[0].length];
         Queue<Node> nodeQueue = new LinkedList<Node>();
-        visited[sr][sc]=true;
-        nodeQueue.add(new Node(sr,sc,0));
+        visited[sr][sc] = true;
+        nodeQueue.add(new Node(sr, sc, 0));
         int minDist = Integer.MAX_VALUE;
-        while(!nodeQueue.isEmpty()){
+        while (!nodeQueue.isEmpty()) {
             Node nodeElem = nodeQueue.poll();
-             sr=nodeElem.x;
-             sc=nodeElem.y;
-             int dist=nodeElem.dist;
-             if(sr==tr && sc==tc){
-                 minDist=dist;break;
-             }
-             for(int direction=0;direction<4;direction++){
-                 if(isWithinGridBoundaryandNotYetVisited(grid,sr+row[direction],sc+col[direction],visited)){
-                     visited[sr+row[direction]][sc+col[direction]]=true;
-                     nodeQueue.add(new Node(sr+row[direction],sc+col[direction],dist+1));
-                 }
-             }
+            sr = nodeElem.x;
+            sc = nodeElem.y;
+            int dist = nodeElem.dist;
+            if (sr == tr && sc == tc) {
+                minDist = dist;
+                break;
+            }
+            for (int direction = 0; direction < 4; direction++) {
+                if (isWithinGridBoundaryandNotYetVisited(grid, sr + row[direction], sc + col[direction], visited)) {
+                    visited[sr + row[direction]][sc + col[direction]] = true;
+                    nodeQueue.add(new Node(sr + row[direction], sc + col[direction], dist + 1));
+                }
+            }
         }
-        if (minDist != Integer.MAX_VALUE){
-            return  minDist;
+        if (minDist != Integer.MAX_VALUE) {
+            return minDist;
         }
         return -1;
     }
-    static boolean isWithinGridBoundaryandNotYetVisited(int[][] grid,int sr,int sc, boolean[][]visited){
-        return (sr>=0 && sr<grid.length && sc >=0 && sc<grid[0].length && grid[sr][sc]==1 && !visited[sr][sc]);
+
+    static boolean isWithinGridBoundaryandNotYetVisited(int[][] grid, int sr, int sc, boolean[][] visited) {
+        return (sr >= 0 && sr < grid.length && sc >= 0 && sc < grid[0].length && grid[sr][sc] == 1 && !visited[sr][sc]);
     }
+
     public static void main(String[] args) {
-        int[][] grid= {{1, 1, 1, 1}, {0, 0, 0, 1},{1, 1, 1, 1}};
-        System.out.println("grid distance : " + shortestCellPathBFS(grid,0,0,2,0));
-        int[][] nonreachablegrid= {{1, 1, 1, 1}, {0, 0, 0, 1},{1, 0, 1, 1}};
-        System.out.println("nonreachablegrid distance : " + shortestCellPathBFS(nonreachablegrid,0,0,2,0));
+        int[][] grid = {{1, 1, 1, 1}, {0, 0, 0, 1}, {1, 1, 1, 1}};
+        System.out.println("grid distance : " + shortestCellPathBFS(grid, 0, 0, 2, 0));
+        int[][] nonreachablegrid = {{1, 1, 1, 1}, {0, 0, 0, 1}, {1, 0, 1, 1}};
+        System.out.println("nonreachablegrid distance : " + shortestCellPathBFS(nonreachablegrid, 0, 0, 2, 0));
     }
 
 }

@@ -14,7 +14,7 @@ public class WordCountEngine {
 
         for (String str : wordString) {
             String strsanitize = sanitize(str);
-            if(strsanitize.length()>0){
+            if (strsanitize.length() > 0) {
                 int freq = hmap.getOrDefault(strsanitize, 0) + 1;
                 String strword = strsanitize;
                 hmap.put(strword, freq);
@@ -49,8 +49,8 @@ public class WordCountEngine {
 
     private static String sanitize(String inpstring) {
         StringBuilder strbuilder = new StringBuilder();
-        for(char c : inpstring.toCharArray()){
-            if (Character.isLetterOrDigit(c)){
+        for (char c : inpstring.toCharArray()) {
+            if (Character.isLetterOrDigit(c)) {
                 strbuilder.append(c);
             }
         }
@@ -58,13 +58,12 @@ public class WordCountEngine {
     }
 
 
-
     public static void main(String[] args) {
         //String document="Practice makes perfect. you'll only get Perfect by practice. just practice!";
-        String document="Every book is a quotation; and every house is a quotation out of all forests, and mines, and stone quarries; and every man is a quotation from all his ancestors.";
-        String[][] output =wordCountEngine(document);
-        for (int j = 0; j < output.length; j++){
-            String[] strarr= new String[]{output[j][0],output[j][1]};
+        String document = "Every book is a quotation; and every house is a quotation out of all forests, and mines, and stone quarries; and every man is a quotation from all his ancestors.";
+        String[][] output = wordCountEngine(document);
+        for (int j = 0; j < output.length; j++) {
+            String[] strarr = new String[]{output[j][0], output[j][1]};
             System.out.println(Arrays.toString(strarr));
         }
     }
