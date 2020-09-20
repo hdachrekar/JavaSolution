@@ -4,6 +4,7 @@ import java.util.*;
 
 public class WordLadderOrShortestWordEditPathLC127 {
     public int ladderLength(String beginWord, String endWord, List<String> wordList) {
+        if (beginWord.length() != endWord.length()) return -1;
         Set<String> wordSet = new HashSet<String>(wordList);
         if (!wordSet.contains(endWord)) return 0;
         Queue<String> queueNode = new LinkedList<String>();
