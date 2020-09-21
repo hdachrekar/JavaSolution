@@ -29,7 +29,7 @@ class distCompare implements Comparator<Point> {
 public class KClosestPointstoOriginLC973 {
     public int[][] kClosest(int[][] points, int K) {
         distCompare dc = new distCompare();
-        PriorityQueue<Point> queue = new PriorityQueue<Point>(points.length,dc);
+        PriorityQueue<Point> queue = new PriorityQueue<Point>(K,dc);
         for(int i=0;i<points.length;i++){
             double dist = euclideanDistCalFromOrigin(points[i][0],points[i][1]);
             Point p = new Point(points[i][0],points[i][1],dist);
