@@ -6,7 +6,7 @@ class ListNode {
     ListNode(int val) { this.val = val; }
     ListNode(int val, ListNode next) { this.val = val; this.next = next; }
 }
-public class RemoveNthFromEnd {
+public class RemoveNthFromEndLC19 {
     public ListNode removeNthFromEnd(ListNode head, int n) {
         ListNode dummy= new ListNode(-1);
         dummy.next = head;
@@ -38,7 +38,7 @@ public class RemoveNthFromEnd {
         ListNode three = new ListNode(3,four);
         ListNode two = new ListNode(2,three);
         ListNode one = new ListNode(1,two);
-        ListNode result =new RemoveNthFromEnd().removeNthFromEnd(one,n);
+        ListNode result =new RemoveNthFromEndLC19().removeNthFromEnd(one,n);
         while(result != null){
             System.out.println(result.val);
             result=result.next;
