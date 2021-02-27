@@ -60,6 +60,7 @@ public class RottingOrangesLC994 {
         }
         return -1;
     }
+
     public static void main(String[] args) {
     int[][] grid= {{2,1,1},{1,1,0},{0,1,1}};
     int output = new RottingOrangesLC994().orangesRotting(grid);
